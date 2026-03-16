@@ -1,0 +1,122 @@
+/* Dashboard layout */
+.dashboard { display: flex; min-height: 100vh; background: #0A0A0A; color: #F5F0E8; font-family: 'DM Sans', sans-serif; }
+
+.appel-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: linear-gradient(90deg, #1A1A1A, #222);
+  border-bottom: 2px solid #C9A84C;
+  padding: 0.8rem 2rem; display: flex; align-items: center; gap: 1rem;
+  font-size: 0.9rem; animation: slideDown 0.3s ease;
+}
+@keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+
+/* Sidebar */
+.sidebar {
+  width: 260px; flex-shrink: 0;
+  background: #111;
+  border-right: 1px solid rgba(201,168,76,0.15);
+  display: flex; flex-direction: column;
+  padding: 1.5rem 0; position: sticky; top: 0; height: 100vh;
+}
+.sidebar-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #C9A84C; letter-spacing: 3px; padding: 0 1.5rem 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.1); }
+.sidebar-user { display: flex; align-items: center; gap: 0.8rem; padding: 1.2rem 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.1); }
+.user-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.78rem; color: #C9A84C; font-weight: 500; }
+.user-name { font-size: 0.9rem; font-weight: 500; }
+.user-role { font-size: 0.72rem; color: #666; text-transform: capitalize; }
+
+.sidebar-nav { flex: 1; padding: 1rem 0; }
+.sidebar-nav button {
+  width: 100%; text-align: left; padding: 0.75rem 1.5rem;
+  background: transparent; border: none; color: #888; font-family: inherit; font-size: 0.88rem;
+  cursor: pointer; display: flex; align-items: center; gap: 0.8rem; transition: all 0.15s;
+}
+.sidebar-nav button:hover { color: #F5F0E8; background: rgba(255,255,255,0.03); }
+.sidebar-nav button.active { color: #C9A84C; background: rgba(201,168,76,0.07); border-right: 2px solid #C9A84C; }
+
+.sidebar-footer { padding: 1rem 1.5rem; border-top: 1px solid rgba(201,168,76,0.1); }
+.ws-status { font-size: 0.72rem; color: #555; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.8rem; }
+.dot-green { width: 6px; height: 6px; border-radius: 50%; background: #6EE9A5; }
+.dot-red { width: 6px; height: 6px; border-radius: 50%; background: #FF6B6B; }
+.btn-logout { width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #888; padding: 0.5rem; font-family: inherit; font-size: 0.8rem; cursor: pointer; border-radius: 2px; transition: all 0.2s; }
+.btn-logout:hover { color: #FF6B6B; border-color: rgba(255,107,107,0.3); }
+
+/* Main */
+.dash-main { flex: 1; overflow-y: auto; }
+.dash-content { padding: 2.5rem; max-width: 1100px; }
+.dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.dash-header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
+
+.btn-gold { background: #C9A84C; color: #0A0A0A; border: none; padding: 0.7rem 1.8rem; font-family: inherit; font-size: 0.85rem; font-weight: 500; cursor: pointer; border-radius: 2px; letter-spacing: 0.5px; transition: all 0.2s; }
+.btn-gold:hover { background: #E8C96D; }
+.btn-outline-small { background: transparent; border: 1px solid rgba(201,168,76,0.3); color: #C9A84C; padding: 0.5rem 1rem; font-family: inherit; font-size: 0.8rem; cursor: pointer; border-radius: 2px; margin-top: 0.8rem; transition: all 0.2s; }
+.btn-outline-small:hover { background: rgba(201,168,76,0.1); }
+
+.live-badge { background: rgba(110,233,165,0.1); color: #6EE9A5; font-size: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 20px; border: 1px solid rgba(110,233,165,0.2); }
+
+/* Ticket actif */
+.ticket-actif {
+  background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.25);
+  border-left: 3px solid #C9A84C; border-radius: 2px; padding: 1.5rem 2rem; margin-bottom: 2rem;
+}
+.ticket-actif-label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: #C9A84C; margin-bottom: 0.5rem; }
+.ticket-num { font-family: 'Playfair Display', serif; font-size: 3rem; color: #C9A84C; font-weight: 900; line-height: 1; }
+.ticket-service { font-size: 0.9rem; color: #888; margin-top: 0.3rem; }
+.ticket-attente { font-size: 0.85rem; color: #F5F0E8; margin-top: 0.5rem; }
+
+/* Stats */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.stat-card { background: #111; border: 1px solid rgba(201,168,76,0.1); border-radius: 2px; padding: 1.2rem; }
+.stat-label { font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; color: #555; margin-bottom: 0.4rem; }
+.stat-val { font-family: 'Playfair Display', serif; font-size: 2rem; color: #C9A84C; font-weight: 700; }
+
+/* File rows */
+.section-block { background: #111; border: 1px solid rgba(201,168,76,0.1); border-radius: 2px; padding: 1.5rem; }
+.section-block h3 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 1rem; color: #C9A84C; }
+.file-row { display: flex; align-items: center; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.file-row:last-child { border-bottom: none; }
+.file-pos { width: 24px; height: 24px; border-radius: 50%; background: rgba(201,168,76,0.1); color: #C9A84C; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 500; flex-shrink: 0; }
+.file-num { font-family: 'Playfair Display', serif; font-weight: 700; color: #C9A84C; min-width: 60px; }
+.file-name { flex: 1; font-size: 0.88rem; }
+.file-service { font-size: 0.78rem; color: #666; min-width: 120px; text-transform: capitalize; }
+.empty-msg { font-size: 0.85rem; color: #555; }
+
+/* Menu */
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.08); }
+.menu-card { background: #111; padding: 1.5rem; transition: background 0.15s; }
+.menu-card:hover { background: #1A1A1A; }
+.menu-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; }
+.menu-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; }
+.menu-badge { font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; background: rgba(201,168,76,0.12); color: #C9A84C; border: 1px solid rgba(201,168,76,0.2); padding: 2px 8px; border-radius: 2px; }
+.menu-info { display: flex; justify-content: space-between; align-items: center; }
+.menu-duree { font-size: 0.8rem; color: #666; }
+.menu-prix { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #C9A84C; font-weight: 700; }
+
+/* File full */
+.file-full { display: flex; flex-direction: column; gap: 8px; }
+.file-card { display: flex; align-items: center; gap: 1.5rem; background: #111; border: 1px solid rgba(255,255,255,0.05); border-radius: 2px; padding: 1rem 1.5rem; }
+.file-card.en_cours { border-color: rgba(110,233,165,0.3); background: rgba(110,233,165,0.04); }
+.fc-pos { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: rgba(201,168,76,0.3); font-weight: 700; min-width: 30px; }
+.fc-info { flex: 1; }
+.fc-num { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #C9A84C; font-weight: 700; }
+.fc-name { font-size: 0.88rem; margin-top: 0.2rem; }
+.fc-service { font-size: 0.78rem; color: #666; text-transform: capitalize; }
+.fc-right { text-align: right; }
+.fc-prix { font-size: 0.8rem; color: #555; margin-top: 0.3rem; }
+
+/* Tickets list */
+.tickets-list { display: flex; flex-direction: column; gap: 8px; }
+.ticket-item { display: flex; align-items: center; gap: 1.5rem; background: #111; border: 1px solid rgba(255,255,255,0.05); border-radius: 2px; padding: 1rem 1.5rem; }
+.ti-num { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #C9A84C; font-weight: 700; min-width: 70px; }
+.ti-info { flex: 1; }
+.ti-service { font-size: 0.9rem; text-transform: capitalize; }
+.ti-date { font-size: 0.78rem; color: #666; margin-top: 0.2rem; }
+.ti-right { text-align: right; }
+.ti-prix { font-size: 0.8rem; color: #555; margin-top: 0.3rem; }
+
+.empty-state { text-align: center; padding: 4rem 2rem; color: #555; }
+.empty-state p { margin-bottom: 1.5rem; font-size: 0.9rem; }
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .dash-content { padding: 1.5rem; }
+}

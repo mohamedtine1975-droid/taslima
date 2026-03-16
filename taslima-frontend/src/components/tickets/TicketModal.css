@@ -1,0 +1,83 @@
+.ticket-modal {
+  background: #1A1A1A; border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px; padding: 2rem; max-width: 500px; width: 100%;
+  position: relative; max-height: 90vh; overflow-y: auto;
+}
+.tm-close { position: absolute; top: 1rem; right: 1.2rem; background: none; border: none; color: #888; font-size: 1.1rem; cursor: pointer; }
+
+/* Progress */
+.tm-progress { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 2rem; }
+.tm-step { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; flex: 1; position: relative; }
+.tm-step:not(:last-child)::after {
+  content: ''; position: absolute; top: 14px; left: calc(50% + 14px); right: calc(-50% + 14px);
+  height: 1px; background: rgba(255,255,255,0.08); z-index: 0;
+}
+.tm-step.active:not(:last-child)::after { background: rgba(201,168,76,0.3); }
+.step-circle {
+  width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center; font-size: 0.78rem; color: #555;
+  background: #111; position: relative; z-index: 1;
+}
+.tm-step.active .step-circle { border-color: #C9A84C; color: #C9A84C; background: rgba(201,168,76,0.1); }
+.tm-step.done .step-circle { border-color: #6EE9A5; color: #6EE9A5; background: rgba(110,233,165,0.1); }
+.step-label { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; color: #555; }
+.tm-step.active .step-label { color: #C9A84C; }
+
+/* Body */
+.tm-body h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 1.5rem; }
+
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: #666; margin-bottom: 0.4rem; }
+.form-group input, .form-group select {
+  width: 100%; background: #111; border: 1px solid rgba(201,168,76,0.2);
+  color: #F5F0E8; padding: 0.75rem 1rem; font-family: inherit; font-size: 0.9rem;
+  border-radius: 2px; outline: none; transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus { border-color: #C9A84C; }
+.form-group select option { background: #111; }
+
+/* Services */
+.services-list { display: flex; flex-direction: column; gap: 6px; max-height: 340px; overflow-y: auto; margin-bottom: 1.5rem; }
+.service-option {
+  display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1rem;
+  background: #111; border: 1px solid rgba(255,255,255,0.06); border-radius: 2px;
+  cursor: pointer; transition: all 0.15s;
+}
+.service-option:hover { border-color: rgba(201,168,76,0.2); }
+.service-option.selected { border-color: #C9A84C; background: rgba(201,168,76,0.06); }
+.service-option input { display: none; }
+.so-info { flex: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.so-name { font-size: 0.9rem; font-weight: 500; }
+.so-badge { font-size: 0.62rem; background: rgba(201,168,76,0.1); color: #C9A84C; border: 1px solid rgba(201,168,76,0.2); padding: 1px 6px; border-radius: 2px; }
+.so-duree { font-size: 0.75rem; color: #666; width: 100%; }
+.so-prix { font-family: 'Playfair Display', serif; font-size: 1rem; color: #C9A84C; font-weight: 700; white-space: nowrap; }
+
+/* Recap */
+.recap { background: #111; border: 1px solid rgba(201,168,76,0.15); border-radius: 2px; padding: 1.2rem; margin-bottom: 1.5rem; }
+.recap-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.88rem; }
+.recap-row span { color: #666; }
+.recap-total { display: flex; justify-content: space-between; padding-top: 0.8rem; margin-top: 0.3rem; }
+.recap-total span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+.recap-total strong { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #C9A84C; }
+
+/* Actions */
+.tm-actions { display: flex; gap: 0.8rem; }
+.btn-next {
+  flex: 1; background: #C9A84C; color: #0A0A0A; border: none;
+  padding: 0.85rem; font-family: inherit; font-size: 0.88rem; font-weight: 500;
+  cursor: pointer; border-radius: 2px; transition: all 0.2s;
+}
+.btn-next:hover { background: #E8C96D; }
+.btn-back {
+  background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #888;
+  padding: 0.85rem 1.2rem; font-family: inherit; font-size: 0.85rem; cursor: pointer;
+  border-radius: 2px; flex-shrink: 0;
+}
+.btn-back:hover { color: #F5F0E8; }
+.btn-confirm {
+  flex: 1; background: #C9A84C; color: #0A0A0A; border: none;
+  padding: 0.85rem; font-family: inherit; font-size: 0.88rem; font-weight: 500;
+  cursor: pointer; border-radius: 2px; transition: all 0.2s;
+}
+.btn-confirm:hover { background: #E8C96D; }
+.btn-confirm:disabled { opacity: 0.6; cursor: not-allowed; }

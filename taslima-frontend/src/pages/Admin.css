@@ -1,0 +1,123 @@
+.admin-panel { display: flex; min-height: 100vh; background: #0A0A0A; color: #F5F0E8; font-family: 'DM Sans', sans-serif; }
+
+.appel-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: rgba(201,168,76,0.1); border-bottom: 1px solid rgba(201,168,76,0.3);
+  padding: 0.7rem 2rem; font-size: 0.88rem; display: flex; gap: 0.8rem; align-items: center;
+  animation: slideDown 0.3s;
+}
+@keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+
+.admin-sidebar {
+  width: 240px; flex-shrink: 0; background: #0D0D0D;
+  border-right: 1px solid rgba(201,168,76,0.12);
+  display: flex; flex-direction: column; padding: 1.5rem 0; position: sticky; top: 0; height: 100vh;
+}
+
+.admin-logo {
+  font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #C9A84C;
+  letter-spacing: 2px; padding: 0 1.5rem 1.2rem;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+.admin-logo span { font-size: 0.65rem; letter-spacing: 4px; display: block; color: #888; margin-top: 2px; }
+
+.admin-user { display: flex; align-items: center; gap: 0.8rem; padding: 1.2rem 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.08); }
+.admin-avatar { width: 36px; height: 36px; border-radius: 50%; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: #C9A84C; }
+.admin-name { font-size: 0.88rem; font-weight: 500; }
+.admin-role-badge { display: inline-block; font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase; color: #C9A84C; border: 1px solid rgba(201,168,76,0.3); padding: 1px 6px; border-radius: 2px; margin-top: 2px; }
+
+.admin-nav { flex: 1; padding: 1rem 0; }
+.admin-nav button {
+  width: 100%; text-align: left; padding: 0.7rem 1.5rem;
+  background: transparent; border: none; color: #777; font-family: inherit; font-size: 0.85rem;
+  cursor: pointer; display: flex; gap: 0.7rem; align-items: center; transition: all 0.15s;
+}
+.admin-nav button:hover { color: #F5F0E8; background: rgba(255,255,255,0.03); }
+.admin-nav button.active { color: #C9A84C; background: rgba(201,168,76,0.06); border-right: 2px solid #C9A84C; }
+
+.admin-sidebar-footer { padding: 1rem 1.5rem; border-top: 1px solid rgba(201,168,76,0.08); }
+.ws-dot { font-size: 0.7rem; color: #555; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem; }
+.ws-dot .green { width: 6px; height: 6px; border-radius: 50%; background: #6EE9A5; display: block; }
+.ws-dot .red { width: 6px; height: 6px; border-radius: 50%; background: #FF6B6B; display: block; }
+.back-link { display: block; width: 100%; background: transparent; border: none; color: #555; font-family: inherit; font-size: 0.78rem; cursor: pointer; text-align: left; padding: 0.3rem 0; margin-bottom: 0.4rem; }
+.back-link:hover { color: #888; }
+.logout-btn { width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.08); color: #555; padding: 0.45rem; font-family: inherit; font-size: 0.78rem; cursor: pointer; border-radius: 2px; }
+.logout-btn:hover { color: #FF6B6B; }
+
+.admin-main { flex: 1; overflow-y: auto; }
+.admin-content { padding: 2rem 2.5rem; }
+
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.admin-header h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; display: flex; align-items: center; gap: 1rem; }
+.live-dot { font-size: 0.8rem; color: #6EE9A5; background: rgba(110,233,165,0.1); border: 1px solid rgba(110,233,165,0.2); padding: 0.25rem 0.7rem; border-radius: 20px; }
+
+.btn-call {
+  background: #C9A84C; color: #0A0A0A; border: none;
+  padding: 0.7rem 1.5rem; font-family: inherit; font-size: 0.88rem; font-weight: 500;
+  cursor: pointer; border-radius: 2px; transition: all 0.2s;
+}
+.btn-call:hover { background: #E8C96D; }
+.btn-call:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.control-panel {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px; background: rgba(201,168,76,0.08); margin-bottom: 2rem;
+  border: 1px solid rgba(201,168,76,0.08);
+}
+.control-stat { background: #111; padding: 1.5rem; text-align: center; }
+.cs-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #F5F0E8; }
+.cs-label { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-top: 0.3rem; }
+
+/* Table */
+.admin-table-wrap { overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.admin-table thead { border-bottom: 1px solid rgba(201,168,76,0.15); }
+.admin-table th { padding: 0.8rem 1rem; text-align: left; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #555; font-weight: 400; }
+.admin-table td { padding: 0.9rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.admin-table tr:hover td { background: rgba(255,255,255,0.02); }
+.admin-table tr.row-active td { background: rgba(110,233,165,0.04); }
+
+.td-pos { width: 40px; color: #555; }
+.td-num { font-family: 'Playfair Display', serif; font-weight: 700; color: #C9A84C; }
+.td-service { text-transform: capitalize; color: #888; font-size: 0.82rem; }
+.td-tel { color: #666; font-size: 0.82rem; }
+.td-prix { color: #C9A84C; font-family: 'Playfair Display', serif; }
+.td-date { color: #555; font-size: 0.8rem; }
+.td-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.statut-badge { font-size: 0.72rem; padding: 2px 8px; border-radius: 20px; border: 1px solid; font-weight: 500; letter-spacing: 0.5px; }
+
+.action-btn {
+  padding: 0.3rem 0.7rem; border: 1px solid; font-family: inherit; font-size: 0.75rem;
+  cursor: pointer; border-radius: 2px; background: transparent; transition: all 0.15s;
+}
+.action-btn.call { color: #6EE9A5; border-color: rgba(110,233,165,0.3); }
+.action-btn.call:hover { background: rgba(110,233,165,0.1); }
+.action-btn.done { color: #C9A84C; border-color: rgba(201,168,76,0.3); }
+.action-btn.done:hover { background: rgba(201,168,76,0.1); }
+.action-btn.absent { color: #FF8C42; border-color: rgba(255,140,66,0.3); }
+.action-btn.absent:hover { background: rgba(255,140,66,0.1); }
+
+.statut-select {
+  background: #111; border: 1px solid rgba(201,168,76,0.2); color: #F5F0E8;
+  padding: 0.3rem 0.6rem; font-family: inherit; font-size: 0.78rem; border-radius: 2px;
+  cursor: pointer; outline: none;
+}
+.statut-select option { background: #111; }
+
+.filtre-select {
+  background: #111; border: 1px solid rgba(201,168,76,0.2); color: #F5F0E8;
+  padding: 0.5rem 1rem; font-family: inherit; font-size: 0.85rem; border-radius: 2px;
+  cursor: pointer; outline: none;
+}
+
+.empty-row { text-align: center; padding: 3rem; color: #555; }
+
+/* Stats bento */
+.stats-bento { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 1px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.08); }
+.bento-card { background: #111; padding: 2rem; }
+.bento-card.big { grid-row: span 2; }
+.bento-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-bottom: 0.8rem; }
+.bento-val { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; }
+.bento-val.gold { color: #C9A84C; }
+.bento-sub { font-size: 0.8rem; color: #555; margin-top: 0.4rem; }
