@@ -266,27 +266,8 @@ const Dashboard = () => {
       {/* Modals */}
       {ticketModal && <TicketModal onClose={() => setTicketModal(false)} onSuccess={onTicketCree} services={SERVICES} />}
       {paymentModal && <PaymentModal service={paymentModal.service} user={user} onClose={() => setPaymentModal(null)} onSuccess={onTicketCree} />}
-
-      {/* Navigation mobile bas d'écran */}
-      <nav className="mobile-nav">
-        {[
-          { id: 'accueil', icon: '⬛', label: 'Accueil' },
-          { id: 'menu', icon: '✂', label: 'Menu' },
-          { id: 'file', icon: '⏱', label: 'File' },
-          { id: 'mes-tickets', icon: '🎫', label: 'Tickets' },
-        ].map(item => (
-          <button key={item.id} className={onglet === item.id ? 'mobile-nav-btn active' : 'mobile-nav-btn'} onClick={() => setOnglet(item.id)}>
-            <span className="mobile-nav-icon">{item.icon}</span>
-            <span className="mobile-nav-label">{item.label}</span>
-          </button>
-        ))}
-        <button className="mobile-nav-btn" onClick={() => setTicketModal(true)}>
-          <span className="mobile-nav-icon">+</span>
-          <span className="mobile-nav-label">Ticket</span>
-        </button>
-      </nav>
     </div>
   );
 };
 
-export default Dashboard;navbar 
+export default Dashboard;
