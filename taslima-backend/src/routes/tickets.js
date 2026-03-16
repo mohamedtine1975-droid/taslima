@@ -44,10 +44,9 @@ router.post('/', [
   body('nomClient').trim().notEmpty().withMessage('Le nom est obligatoire'),
   body('telephoneClient').trim().notEmpty().withMessage('Le téléphone est obligatoire'),
   body('service').notEmpty().withMessage('Le service est obligatoire')
-    .isIn(Object.keys(Ticket.schema.path('service').enumValues
-      ? Ticket.schema.path('service').options.enum
-      : ['coupe_simple','degrade_americain','coupe_barbe','rasage_traditionnel',
-         'twists_dreadlocks','soin_cuir_chevelu','coupe_enfant','forfait_vip']))
+    .isIn(['coupe_simple','coupe_barbe','degrade_simple','degrade_noir',
+           'degrade_enfant','degrade_enfant_noir','taper',
+           'teinture_partielle','teinture_complete','teinture_coiffure','lavage'])
     .withMessage('Service invalide')
 ], async (req, res) => {
   try {
