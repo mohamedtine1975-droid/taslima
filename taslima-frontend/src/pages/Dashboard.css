@@ -172,3 +172,10 @@
 @media (max-width: 768px) {
   .mobile-nav { display: flex; }
 }
+.mobile-nav-btn.logout-mobile {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-btn.logout-mobile:active {
+  background: rgba(255, 107, 107, 0.1);
+}

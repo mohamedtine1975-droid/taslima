@@ -28,7 +28,7 @@ const Dashboard = () => {
   const { file, stats, dernierAppel, connecte } = useQueue();
   const navigate = useNavigate();
 
-  const [onglet, setOnglet] = useState('accueil'); // accueil | menu | file | mes-tickets | profil
+  const [onglet, setOnglet] = useState('accueil'); 
   const [mesTickets, setMesTickets] = useState([]);
   const [ticketModal, setTicketModal] = useState(false);
   const [paymentModal, setPaymentModal] = useState(null); 
@@ -85,7 +85,7 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* Sidebar Desktop */}
+      {/* Sidebar (Desktop) */}
       <aside className="sidebar">
         <div className="sidebar-logo">TALISMAN</div>
         <div className="sidebar-user">
@@ -118,14 +118,6 @@ const Dashboard = () => {
 
       {/* Main content */}
       <main className="dash-main">
-        
-        {/* Header Mobile Uniquement */}
-        <header className="mobile-header">
-           <div className="mobile-logo">TALISMAN</div>
-           <button className="mobile-logout-btn" onClick={deconnexion} title="Se déconnecter">
-             Logout 🚪
-           </button>
-        </header>
 
         {/* ACCUEIL */}
         {onglet === 'accueil' && (
@@ -142,8 +134,8 @@ const Dashboard = () => {
                 <div className="ticket-service">{ticketEnCours.service}</div>
                 <div className="ticket-attente">
                   {ticketEnCours.avantMoi > 0
-                    ? ticketEnCours.avantMoi + ' personnes avant vous — ' + ticketEnCours.tempsAttenteEstime
-                    : 'Prochaine coupe !'}
+                    ? ticketEnCours.avantMoi + ' personnes avant vous'
+                    : 'C\'est presque votre tour !'}
                 </div>
               </div>
             )}
@@ -218,7 +210,7 @@ const Dashboard = () => {
             </div>
             <div className="file-full">
               {file.length === 0
-                ? <div className="empty-state"><div style={{ fontSize: '3rem' }}>✂</div><p>File vide — Pas d'attente !</p></div>
+                ? <div className="empty-state"><p>File vide — Pas d'attente !</p></div>
                 : file.map((t, i) => (
                   <div key={t._id} className={'file-card ' + t.statut}>
                     <div className="fc-pos">{i + 1}</div>
@@ -242,42 +234,23 @@ const Dashboard = () => {
         {onglet === 'mes-tickets' && (
           <div className="dash-content">
             <div className="dash-header"><h1>Mes Tickets</h1></div>
-            {mesTickets.length === 0
-              ? <div className="empty-state"><p>Aucun ticket pour le moment.</p><button className="btn-gold" onClick={() => setTicketModal(true)}>Prendre un ticket →</button></div>
-              : (
-                <div className="tickets-list">
-                  {mesTickets.map(t => (
-                    <div key={t._id} className="ticket-item">
-                      <div className="ti-num">{t.numero}</div>
-                      <div className="ti-info">
-                        <div className="ti-service">{t.service?.replace(/_/g, ' ')}</div>
-                        <div className="ti-date">{new Date(t.createdAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</div>
-                      </div>
-                      <div className="ti-right">
-                        {statusBadge(t.statut)}
-                        <div className="ti-prix">{t.prixCFA?.toLocaleString()} CFA</div>
-                      </div>
+            <div className="tickets-list">
+              {mesTickets.length === 0
+                ? <p className="empty-msg">Aucun ticket trouvé.</p>
+                : mesTickets.map(t => (
+                  <div key={t._id} className="ticket-item">
+                    <div className="ti-num">{t.numero}</div>
+                    <div className="ti-info">
+                      <div className="ti-service">{t.service?.replace(/_/g, ' ')}</div>
+                      <div className="ti-date">{new Date(t.createdAt).toLocaleDateString()}</div>
                     </div>
-                  ))}
-                </div>
-              )
-            }
-          </div>
-        )}
-
-        {/* PROFIL / DECONNEXION MOBILE */}
-        {onglet === 'profil' && (
-          <div className="dash-content">
-             <div className="dash-header"><h1>Mon Compte</h1></div>
-             <div className="profile-section">
-                <div className="user-avatar-large">{user?.nom?.substring(0, 2).toUpperCase()}</div>
-                <h2>{user?.nom}</h2>
-                <p>{user?.telephone || user?.email}</p>
-                <div className="profile-stats">
-                   <div className="p-stat"><strong>{user?.totalCoupes || 0}</strong><span>Coupes réalisées</span></div>
-                </div>
-                <button className="btn-logout-full" onClick={deconnexion}>Se déconnecter</button>
-             </div>
+                    <div className="ti-right">
+                      {statusBadge(t.statut)}
+                      <div className="ti-prix">{t.prixCFA?.toLocaleString()} CFA</div>
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
         )}
       </main>
@@ -286,20 +259,24 @@ const Dashboard = () => {
       {ticketModal && <TicketModal onClose={() => setTicketModal(false)} onSuccess={onTicketCree} services={SERVICES} />}
       {paymentModal && <PaymentModal service={paymentModal.service} user={user} onClose={() => setPaymentModal(null)} onSuccess={onTicketCree} />}
 
-      {/* Navigation mobile bas d'écran */}
+      {/* Navigation mobile (Bas d'écran) */}
       <nav className="mobile-nav">
         {[
           { id: 'accueil', icon: '🏠', label: 'Accueil' },
           { id: 'menu', icon: '✂', label: 'Menu' },
           { id: 'file', icon: '⏱', label: 'File' },
           { id: 'mes-tickets', icon: '🎫', label: 'Tickets' },
-          { id: 'profil', icon: '👤', label: 'Profil' },
         ].map(item => (
           <button key={item.id} className={onglet === item.id ? 'mobile-nav-btn active' : 'mobile-nav-btn'} onClick={() => setOnglet(item.id)}>
             <span className="mobile-nav-icon">{item.icon}</span>
             <span className="mobile-nav-label">{item.label}</span>
           </button>
         ))}
+        {/* BOUTON DE DECONNEXION MOBILE */}
+        <button className="mobile-nav-btn logout-mobile" onClick={deconnexion}>
+          <span className="mobile-nav-icon" style={{ color: '#FF6B6B' }}>🚪</span>
+          <span className="mobile-nav-label" style={{ color: '#FF6B6B' }}>Quitter</span>
+        </button>
       </nav>
     </div>
   );
