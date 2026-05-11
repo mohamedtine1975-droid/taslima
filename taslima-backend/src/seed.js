@@ -19,10 +19,10 @@ const seed = async () => {
 
   // Créer admin
   const admin = await User.create({
-    nom: 'Taslima Admin',
-    telephone: '+221770000001',
-    email: 'admin@taslima.sn',
-    password: 'admin123',
+    nom: process.env.ADMIN_NOM,
+    telephone: process.env.ADMIN_TELEPHONE,
+    email: process.env.ADMIN_EMAIL,
+    password: process.env.ADMIN_PASSWORD,
     role: 'admin'
   });
 
@@ -60,7 +60,7 @@ const seed = async () => {
   });
 
   console.log('\n✅ Seed terminé !');
-  console.log('👤 Admin: +221770000001 / admin123');
+  console.log(`👤 Admin: ${process.env.ADMIN_TELEPHONE} / ${process.env.ADMIN_PASSWORD}`);
   console.log('✂️  Coiffeur: +221770000002 / coiff123');
   console.log('👥 Client: +221771234567 / client123\n');
 
